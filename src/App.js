@@ -120,6 +120,8 @@ const particlesOptions = {
   "retina_detect": true
 }
 
+const serverUrl = 'https://boiling-mountain-71547.herokuapp.com';
+
 const initialState = {
   input: '',
   imageUrl: '',
@@ -203,7 +205,7 @@ class App extends Component {
 
   onImageSubmit = () => {
       this.setState({imageUrl: this.state.input})
-      fetch('http://localhost:3001/imageurl', {
+      fetch(`${serverUrl}/imageurl`, {
           method: 'post',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -218,7 +220,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-            fetch('http://localhost:3001/image', {
+            fetch(`${serverUrl}/image`, {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -266,9 +268,9 @@ class App extends Component {
             <FaceRecognition imageUrl={this.state.imageUrl} celebrityMain={this.state.celebrityMain} celebrityOther={this.state.celebrityOther} box={this.state.box}/>
           </div>
         : ( this.state.route === 'signin' || this.state.route === 'signout'
-        ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+        ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} serverURL={serverUrl}/>
         :
-        <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+        <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} serverURL={serverUrl}/>
           )
         }
       </div>

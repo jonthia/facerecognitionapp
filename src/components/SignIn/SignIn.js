@@ -1,5 +1,5 @@
 import React from 'react';
-import { URLSearchParams } from 'url';
+// import { URLSearchParams } from 'url';
 
 class SignIn extends React.Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class SignIn extends React.Component {
 
     // when the signin button is pressed post the data to server
     onSubmitSignIn = () => {
-        fetch('http://localhost:3001/signin', {
+        fetch(`${this.props.serverUrl}/signin`, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -38,6 +38,7 @@ class SignIn extends React.Component {
             }
             else { console.log('error') }
         })
+        .catch(err => console.log(err))
         
     }
 
