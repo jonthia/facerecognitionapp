@@ -268,9 +268,9 @@ class App extends Component {
             <FaceRecognition imageUrl={this.state.imageUrl} celebrityMain={this.state.celebrityMain} celebrityOther={this.state.celebrityOther} box={this.state.box}/>
           </div>
         : ( this.state.route === 'signin' || this.state.route === 'signout'
-        ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} serverURL={serverUrl}/>
+        ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} serverUrl={serverUrl}/>
         :
-        <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} serverURL={serverUrl}/>
+        <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} serverUrl={serverUrl}/>
           )
         }
       </div>

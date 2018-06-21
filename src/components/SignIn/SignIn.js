@@ -8,8 +8,7 @@ class SignIn extends React.Component {
             signInEmail: '',
             signInPassword: ''
         }
-    }
-
+    };
     // when the input boxes are typed in...
     onEmailChange = (event) => {
         this.setState({signInEmail: event.target.value})
@@ -21,6 +20,7 @@ class SignIn extends React.Component {
 
     // when the signin button is pressed post the data to server
     onSubmitSignIn = () => {
+        console.log(this.props.serverUrl);
         fetch(`${this.props.serverUrl}/signin`, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
